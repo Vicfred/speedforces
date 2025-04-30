@@ -1,15 +1,18 @@
 # Codeforces Contest Analyzer
 
-This repository contains three Python scripts for interacting with and analyzing Codeforces data:
+This repository contains four Python scripts for interacting with and analyzing Codeforces data:
 
-- **`problem_distribution.py`**:  
+- **`problem_distribution.py`**  
   Fetches contest standings and plots a histogram of problems solved per contestant, annotated with percentages.
 
-- **`number_of_problems_distribution.py`**:  
+- **`number_of_problems_distribution.py`**  
   Fetches contest standings and plots a bar chart of how many users solved each problem, annotated with bin percentages.
 
-- **`fetch_cf_users.py`**:  
+- **`fetch_cf_users.py`**  
   Fetches **all** Codeforces users who have ever participated in a rated contest (including inactive/retired) and saves them to a timestamped JSON file.
+
+- **`filter_contest_users.py`**  
+  Reads a users JSON dump (from `fetch_cf_users.py`) and filters contest participants by country, printing country rank, global rank, number of problems solved, and profile URLs for each user in the specified contest.
 
 ---
 
@@ -96,9 +99,27 @@ python fetch_cf_users.py
   `users_<YYYY-MM-DD>.json`  
   e.g. `users_2025-04-29.json`
 
-- **Notes:**  
-  - Make sure your machine has internet access.  
-  - By default, it includes inactive and retired users.  
+---
+
+### 4. Filter contest participants by country
+
+```bash
+python filter_contest_users.py --users-file users_<YYYY-MM-DD>.json --contest-id <contestId> --country "<Country Name>"
+```
+
+- **What it does:**  
+  Reads the JSON dump created by `fetch_cf_users.py`, fetches contest standings with `showUnofficial=true`, and prints a tab-delimited list of users from the specified country in that contest.
+
+- **Output format (tab-separated):**
+  ```
+  <country_rank>    <global_rank>    <problems_solved>    <profile_url>
+  ```
+
+- **Example:**
+
+  ```bash
+  python filter_contest_users.py --users-file users_2025-04-29.json --contest-id 1552 --country "United States"
+  ```
 
 ---
 
