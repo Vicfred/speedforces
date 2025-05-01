@@ -104,6 +104,6 @@ if __name__ == "__main__":
     plt.tight_layout()
 
     # Save output
-    out_file = f"contest_{args.contestId}_solves_per_problem.png"
+    out_file = f"img/contest_{args.contestId}_solves_per_problem.png"
     plt.savefig(out_file)
     print(f"Solvers per problem chart with bin % annotations saved to {out_file}")

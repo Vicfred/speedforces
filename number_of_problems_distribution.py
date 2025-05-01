@@ -145,6 +145,6 @@ if __name__ == "__main__":
     plt.tight_layout()
 
     # Save figure
-    out_file = f"contest_{args.contestId}_histogram.png"
+    out_file = f"img/contest_{args.contestId}_histogram.png"
     plt.savefig(out_file)
     print(f"Contest histogram saved to {out_file}")
