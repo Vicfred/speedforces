@@ -105,6 +105,7 @@ def print_profiles_with_ranks(rows, country_handles):
     Returns True if any lines were printed, False otherwise.
     """
     printed = set()
+    print(f"Country_Rank\tOverall_Rank\tSolved\turl")
     country_rank = 1
     for row in rows:
         overall_rank = row.get('rank')
